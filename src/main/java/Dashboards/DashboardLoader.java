@@ -13,7 +13,7 @@ public class DashboardLoader {
     public static void init() {
         String api = "api/dashboards/uid/";
         String token = PropertyLoader.getToken();
-        String MyURL = PropertyLoader.getURL();
+        String MyURL = PropertyLoader.getURL() + "/";
         String sendInterval = PropertyLoader.getSendInterval();
         List<String> dashboardIDList = PropertyLoader.getDashboardIDList();
         ArrayList<Graph> graphs = new ArrayList<>();
