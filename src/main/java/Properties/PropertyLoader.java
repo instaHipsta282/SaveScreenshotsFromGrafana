@@ -18,6 +18,7 @@ public class PropertyLoader {
     private static String resultPackage;
     private static List<String> dashboardIDList;
     private static String sendInterval;
+    private static int numberOfThreads;
     public static void init() {
         Properties properties = new Properties();
         String line;
@@ -46,6 +47,7 @@ public class PropertyLoader {
         resultPackage = properties.getProperty("resultPackage");
         dashboardIDList = splitId(properties.getProperty("dashboardIDList"));
         sendInterval = properties.getProperty("sendInterval");
+        numberOfThreads = Integer.parseInt(properties.getProperty("numberOfThreads"));
     }
     public static String getToken() { return token; }
     public static String getURL() { return MyURL; }
@@ -56,6 +58,7 @@ public class PropertyLoader {
     public static String getSendInterval() { return sendInterval; }
     public static String getResultPackage() { return resultPackage; }
     public static List<String> getDashboardIDList() { return dashboardIDList; }
+    public static int getNumberOfThreads() { return numberOfThreads; }
 
     private static List<String> splitId(String s) {
         List<String> list = new ArrayList<>();

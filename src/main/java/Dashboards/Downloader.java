@@ -1,5 +1,7 @@
 package Dashboards;
 
+import Properties.PropertyLoader;
+
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,11 +11,12 @@ import static Properties.PropertyLoader.*;
 public class Downloader{
 
     public static void lol() {
+        int numberOfThreads = PropertyLoader.getNumberOfThreads();
         for(Dashboard dash : DashboardLoader.list) {
             File newPackage = new File( getResultPackage() +
                     "/" + dash.title.replaceAll(" ", "_"));
             boolean ignore = newPackage.mkdir();
-            ExecutorService executor = Executors.newFixedThreadPool(10);
+            ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
             for(Graph graph : dash.graphs) {
                 String newURL = getURL() + "/render/d-solo/" + dash.id + "/"
                         + dash.title.replaceAll(" ", "_")
